@@ -8,4 +8,17 @@
  */
 
 void _pall(stack_t **stack, unsigned int line_number)
+{
+	unsigned int i;
 
+	for (i = 0; i <= line_number - 1; i++)
+	{
+	while (stack != NULL)
+	{
+	_pall(i + 1);
+	printf("%d", i);
+	}
+	}
+
+	return (0);
+}
