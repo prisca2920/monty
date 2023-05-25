@@ -8,3 +8,20 @@
  */
 
 void _add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (!*stack || !stack || !temp->next)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	*temp = *stack;
+
+	(temp->next)->n += temp->n;
+
+	_pop(&temp, line_number);
+
+	*stack = temp;
+}
