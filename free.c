@@ -2,23 +2,19 @@
 
 /**
  * _free - deletes a stack
- * @head: parameter to be checked
+ * @stack: parameter to be checked
  * Return: 0 success
  */
-void _free(stack_t **head)
+void _free(stack_t **stack)
 {
-	stack_t *temp = head;
+	stack_t *temp;
 
-	if (temp == NULL)
-		return;
-
-	while (head)
+	while (*stack)
 	{
-	temp = head;
-	head = head->next;
+	temp = *stack;
+	*stack = (*stack)->next;
 	free(temp);
 	}
-	free(head);
 }
 
 /**

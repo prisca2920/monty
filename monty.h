@@ -51,11 +51,11 @@ int main(int argc, char **argv);
 int check_op(char *str, stack_t **stack, unsigned int line_number);
 
 /*deletes unnecessary space */
-void _free(stack_t *head);
+void _free(stack_t **stack);
 void _more_free(stack_t *stack, char *line, FILE *fp);
 
 /* opcode instructions */
-void _push(stack_t **stack, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number, char *element);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -65,5 +65,5 @@ void _mod(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
-
+void _sub(stack_t **stack, unsigned int line_number);
 #endif

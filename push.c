@@ -7,10 +7,9 @@
  * Return: 0 success
  */
 
-void _push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number, char *element)
 {
 	stack_t *newnode;
-	char element;
 	int i;
 
 	for (i = 0; element[i] != '\0'; i++)
