@@ -10,40 +10,40 @@
 int main(int argc, char **argv)
 {
 	FILE *fp;
+	ssize_t _open;
 	stack_t *stack = NULL;
-	char *line = NULL, *opcode, *n;
-	unsigned int line_number;
-	size_t len = 0;
-	ssize_t read;
+	char *ln = NULL, *opcode, *i;
+	unsigned int ln_no;
+	size_t count = 0;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
 	}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+	fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+	exit(EXIT_FAILURE);
 	}
-	line_number = 0;
-	while ((read = getline(&line, &len, fp) != -1))
+	ln_no = 0;
+	while ((_open = getline(&ln, &count, fp) != -1))
 	{
-		line_number++;
-		opcode = strtok(line, DELIMS);
+	ln_no++;
+	opcode = strtok(ln, DELIMS);
 
-		if (opcode == NULL || strncmp(opcode, "#", 1) == 0)
-			continue;
+	if (opcode == NULL || strncmp(opcode, "#", 1) == 0)
+	continue;
 
-		if (strcmp(opcode, "push") == 0)
-		{
-			n = strtok(NULL, DELIMS);
-			_push(&stack, line_number, n);
-		}
-		else
-			check_op(opcode, &stack, line_number);
+	if (strcmp(opcode, "push") == 0)
+	{
+	i = strtok(NULL, DELIMS);
+	_push(&stack, ln_no, i);
 	}
-	_more_free(stack, line, fp);
+	else
+	check_op(opcode, &stack, ln_no);
+	}
+	_more_free(stack, ln, fp);
 	return (EXIT_SUCCESS);
 }
