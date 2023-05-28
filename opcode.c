@@ -11,18 +11,26 @@ void (*check_op(char *str))(stack_t **stack, unsigned int line_number)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
-		{"pop", _pop},
+		{"pop", pop},
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"sub", _sub},
+		{"div", _div},
+		{"mul", _mul},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
 
-	while (ops[i].opcode && strcmp(str, ops[i].opcode) != 0)
-		i++;
-	if (ops[i].opcode == NULL)
-		return (NULL);
-	return (ops[i].f);
+	for (; ops[i].opcode != NULL; i++)
+	{
+		if (strcmp(str, ops[i].opcode) == 0)
+		{
+			(ops[i].f)(stack, line_number);
+			return (EXIT_SUCCESS);
+		}
+	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, str);
+	exit(EXIT_FAILURE);
 }
-
