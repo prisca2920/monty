@@ -4,6 +4,7 @@
  * _push - pushes an element to the stack.
  * @stack: - struct to be checked
  * @line_number: integer to be checked
+ * @element: char to be checked
  * Return: 0 success
  */
 

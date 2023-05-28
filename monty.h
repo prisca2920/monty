@@ -56,6 +56,7 @@ void _more_free(stack_t *stack, char *line, FILE *fp);
 
 /* opcode instructions */
 void _push(stack_t **stack, unsigned int line_number, char *element);
+void push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
