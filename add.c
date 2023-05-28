@@ -9,19 +9,21 @@
 
 void _add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	int addition, i, j;
 
-	if (!*stack || !stack || !temp->next)
+	if (!*stack || !stack || !stack->next)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	*temp = *stack;
+	i = (*stack)->n;
 
-	(temp->next)->n += temp->n;
+	j = (*stack)->next->n;
 
-	_pop(&temp, line_number);
+	addition = i + j;
 
-	*stack = temp;
+	pop(stack, line_number);
+
+	(*stack)->n = addition;
 }
