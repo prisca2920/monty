@@ -5,7 +5,7 @@
  * @str: opcode command
  * Return: a pointer to func
  */
-void (*check_op(char *str))(stack_t **stack, unsigned int line_number)
+int check_op(char *str, stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
 		{"push", _push},
@@ -21,7 +21,7 @@ void (*check_op(char *str))(stack_t **stack, unsigned int line_number)
 		{"mod", _mod},
 		{NULL, NULL}
 	};
-	unsigned int i = 0;
+	int i = 0;
 
 	for (; ops[i].opcode != NULL; i++)
 	{

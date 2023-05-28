@@ -10,7 +10,7 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode;
-	char *element;
+	char element;
 	int i;
 
 	for (i = 0; element[i] != '\0'; i++)

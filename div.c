@@ -11,7 +11,7 @@ void _div(stack_t **stack, unsigned int line_number)
 {
 	int division, i, j;
 
-	if (!*stack || !stack || !stack->next)
+	if (!*stack || !stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

@@ -9,17 +9,18 @@
 
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	int node_a, node_b;
+	(void) line_number;
+	unsigned int a, b;
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-	fprintf(stderr "L%u: can't swap, stack too short," line_number);
+	fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 	exit(EXIT_FAILURE);
 	}
 
-	node_a = (*stack)->n;
-	node_b = (*stack)->next->n;
+	a = (*stack)->n;
+	b = (*stack)->next->n;
 
-	(*stack)->n = node_b;
-	(*stack)->next->n = node_a;
+	(*stack)->n = b;
+	(*stack)->next->n = a;
 }

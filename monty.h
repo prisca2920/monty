@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +13,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define _GNU_SOURCE
 #define DELIMS "\n\t\r "
 
 /**
@@ -47,7 +48,7 @@ typedef struct instruction_s
 
 /* monty main instructions */
 int main(int argc, char **argv);
-void (*check_op(char *str))(stack_t **stack, unsigned int line_number);
+int check_op(char *str, stack_t **stack, unsigned int line_number);
 
 /*deletes unnecessary space */
 void _free(stack_t *head);
