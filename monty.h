@@ -6,6 +6,13 @@
 #include <string.h>
 #include <stddef.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#define _GNU_SOURCE
+#define DELIMS "\n\t\r "
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -18,9 +25,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 
@@ -34,17 +41,28 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* monty main instructions */
+int main(int argc, char **argv);
+void (*check_op(char *str))(stack_t **stack, unsigned int line_number);
+
+/*deletes unnecessary space */
 void _free(stack_t *head);
-int _atoi(char *str, unsigned int line_number);
+void _more_free(stack_t *stack, char *line, FILE *fp);
+
+/* opcode instructions */
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
 
 #endif
